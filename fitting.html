@@ -5,8 +5,81 @@
   <title>클럽피팅 – HANS GOLF</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">family=Noto+Sans+KR:wght@300;400;500;700<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* 이미지를 가로 100% 자연 비율로, 그 위에 글자 오버레이 */
+    .fitting-fullscreen {
+      position: relative;
+      width: 100%;
+      /* 이미지 자연 비율(약 9:5) 유지하되 최소/최대 높이 제한 */
+      aspect-ratio: 16 / 9;
+      max-height: 100vh;
+      min-height: 300px;
+      overflow: hidden;
+    }
+
+    .fitting-fullscreen img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      /* 원본 채도: 약간 어둡고 채도 낮게 — 노란빛 도는 클럽 이미지 특성 반영 */
+      filter: brightness(0.52) saturate(0.75);
+    }
+
+    .fitting-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* 원본은 글자가 세로 중앙보다 살짝 위 */
+      justify-content: center;
+      padding-bottom: 6%;
+      text-align: center;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    /* "Coming Soon" — 원본: 크고 얇은 sans-serif, 순백 */
+    .fitting-overlay h1 {
+      font-family: Assistant, 'Noto Sans KR', sans-serif;
+      font-size: clamp(32px, 5.5vw, 64px);
+      font-weight: 400;          /* 원본 얇은 느낌 */
+      color: #ffffff;
+      letter-spacing: 0.01em;
+      margin-bottom: 18px;
+      line-height: 1.1;
+    }
+
+    /* 본문 — 원본: 작고 가벼운, rgba 흰색 */
+    .fitting-overlay p {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: clamp(12px, 1.5vw, 15px);
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 2;
+      margin: 0;
+      letter-spacing: 0.02em;
+    }
+
+    /* 모바일: 세로 비율 조정 */
+    @media (max-width: 768px) {
+      .fitting-fullscreen {
+        aspect-ratio: 4 / 3;
+        min-height: 260px;
+      }
+      .fitting-overlay h1 { font-size: clamp(28px, 8vw, 42px); }
+      .fitting-overlay p  { font-size: 13px; }
+    }
+
+    @media (max-width: 480px) {
+      .fitting-fullscreen { aspect-ratio: 3 / 4; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -21,9 +94,9 @@
         <ul>
           <li><a href="index.html" data-i18n="nav_home">홈</a></li>
           <li><a href="profile.html" data-i18n="nav_profile">프로필</a></li>
-          <li class="has-dropdown"><a href="#" data-i18n="nav_tour">투어소개 ▾</a>
+          <li class="has-dropdown"><a href="#" data-i18n="nav_tour">투어소개<span class="arrow"> ▾</span></a>
             <ul class="dropdown">
-              <li class="has-dropdown"><a href="#" data-i18n="nav_courses">코스소개 ▸</a>
+              <li class="has-dropdown"><a href="#" data-i18n="nav_courses">코스소개<span class="arrow"> ▸</span></a>
                 <ul class="dropdown sub-dropdown">
                   <li><a href="bangpra.html" data-i18n="nav_bangpra">방프라</a></li>
                   <li><a href="mountain-shadow.html" data-i18n="nav_mountain">마운틴 쉐도우</a></li>
@@ -35,7 +108,7 @@
               <li><a href="nearby.html" data-i18n="nav_nearby">주변시설</a></li>
             </ul>
           </li>
-          <li class="has-dropdown"><a href="#" data-i18n="nav_quote">견적문의 ▾</a>
+          <li class="has-dropdown"><a href="#" data-i18n="nav_quote">견적문의<span class="arrow"> ▾</span></a>
             <ul class="dropdown">
               <li><a href="quote-tour.html" data-i18n="nav_quote_tour">태국 골프여행 견적</a></li>
               <li><a href="quote-lesson.html" data-i18n="nav_quote_lesson">레슨 프로그램 견적</a></li>
@@ -52,20 +125,75 @@
       </div>
     </div>
   </header>
-  <main class="page-content">
-    <h1>클럽피팅</h1>
-    <img src="https://hansgolf.net/cdn/shop/files/sydney-rae-_-6iQvIunqA-unsplash.jpg?v=1732621094&width=1600" alt="클럽피팅" class="fitting-hero" />
-    <div class="coming-soon-box">
-      <h2>Coming Soon</h2>
-      <p>현재 태국 현지와 한국 전주 피팅센터 운영 중입니다.<br>자세한 내용은 추후에 업로드하겠습니다.</p>
+
+  <!-- ── 모바일 드로어 ── -->
+  <div class="mob-drawer" id="mobDrawer">
+    <div class="mob-drawer-header">
+      <a href="index.html" class="mob-drawer-logo">HANS GOLF</a>
+      <button class="mob-drawer-close" id="mobDrawerClose">&#215;</button>
     </div>
+    <div class="mob-panels">
+      <!-- 메인 패널 -->
+      <div class="mob-panel active" id="mobPanelMain">
+        <a href="index.html" class="mob-menu-item" data-i18n="nav_home">홈</a>
+        <a href="profile.html" class="mob-menu-item" data-i18n="nav_profile">프로필</a>
+        <button class="mob-menu-item" data-panel="tour">
+          <span data-i18n="nav_tour">투어소개</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <button class="mob-menu-item" data-panel="quote">
+          <span data-i18n="nav_quote">견적문의</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <a href="fitting.html" class="mob-menu-item" data-i18n="nav_fitting">클럽피팅</a>
+        <a href="immigration.html" class="mob-menu-item" data-i18n="nav_immigration">입국정보</a>
+      </div>
+      <!-- 투어소개 패널 -->
+      <div class="mob-panel" id="mobPanelTour">
+        <button class="mob-panel-back" data-back="main" data-i18n="nav_tour">투어소개</button>
+        <button class="mob-menu-item" data-panel="courses">
+          <span data-i18n="nav_courses">코스소개</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <a href="hotel.html" class="mob-menu-item" data-i18n="nav_hotel">호텔시설</a>
+        <a href="nearby.html" class="mob-menu-item" data-i18n="nav_nearby">주변시설</a>
+      </div>
+      <!-- 코스소개 패널 -->
+      <div class="mob-panel" id="mobPanelCourses">
+        <button class="mob-panel-back" data-back="tour" data-i18n="nav_courses">코스소개</button>
+        <a href="bangpra.html" class="mob-menu-item" data-i18n="nav_bangpra">방프라</a>
+        <a href="mountain-shadow.html" class="mob-menu-item" data-i18n="nav_mountain">마운틴 쉐도우</a>
+        <a href="khao-kheow.html" class="mob-menu-item" data-i18n="nav_khao">카오 키여우</a>
+        <a href="crystal-bay.html" class="mob-menu-item" data-i18n="nav_crystal">크리스탈 베이</a>
+      </div>
+      <!-- 견적문의 패널 -->
+      <div class="mob-panel" id="mobPanelQuote">
+        <button class="mob-panel-back" data-back="main" data-i18n="nav_quote">견적문의</button>
+        <a href="quote-tour.html" class="mob-menu-item" data-i18n="nav_quote_tour">태국 골프여행 견적</a>
+        <a href="quote-lesson.html" class="mob-menu-item" data-i18n="nav_quote_lesson">레슨 프로그램 견적</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="fitting-fullscreen">
+      <img
+        src="https://hansgolf.net/cdn/shop/files/sydney-rae-_-6iQvIunqA-unsplash.jpg?v=1732621094&width=2000"
+        alt="클럽피팅"
+      />
+      <div class="fitting-overlay">
+        <h1>Coming Soon</h1>
+        <p>현재 태국 현지와 한국 전주 피팅센터 운영중입니다.<br>자세한 내용은 추후에 업로드 하겠습니다.</p>
+      </div>
+    </section>
   </main>
+
   <section class="contact-section">
     <div class="contact-inner">
       <p class="section-label">Contact</p>
       <div class="section-rule"></div>
       <p><strong data-i18n="kakao">카카오톡</strong> : hbm810</p>
-      <p><strong data-i18n="email">Email</strong> : <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="92e6ebf1fdfdfcfaf3fcbcf0ffd2f5fff3fbfebcf1fdff">[email&#160;protected]</a></p>
+      <p><strong data-i18n="email">Email</strong> : <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="67131e040808090f060949050a27000a060e0b4904080a">[email&#160;protected]</a></p>
       <p><strong data-i18n="thai_phone">태국전화</strong> : +66-92-736-3325 &nbsp;/&nbsp; 010-3671-9959</p>
       <p><strong data-i18n="korea_phone">국내 긴급전화</strong> : 063-247-0009 &nbsp;/&nbsp; 010-4036-9713</p>
       <a href="https://band.us/band/51484907?invitation_url_id=a6a8A0Abeav6X" target="_blank" rel="noopener" class="band-btn">
@@ -74,6 +202,84 @@
       </a>
     </div>
   </section>
+
   <footer class="site-footer">
     <p>© 2026 Hans Golf Thailand · Sriracha</p>
-    <a href="privacy.html" data-i18n="footer_privacy"
+    <a href="privacy.html" data-i18n="footer_privacy">
+<script src="nav.js"></script>
+  <script>
+  // 모바일 드로어
+  (function() {
+    var hamburger  = document.getElementById('hamburger');
+    var drawer     = document.getElementById('mobDrawer');
+    var closeBtn   = document.getElementById('mobDrawerClose');
+    if (!drawer) return;
+
+    var panels = {
+      main:    document.getElementById('mobPanelMain'),
+      tour:    document.getElementById('mobPanelTour'),
+      courses: document.getElementById('mobPanelCourses'),
+      quote:   document.getElementById('mobPanelQuote'),
+    };
+    var history = [];
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      showPanel('main', false);
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+      history = [];
+    }
+
+    function showPanel(name, pushHistory) {
+      if (pushHistory === undefined) pushHistory = true;
+      Object.keys(panels).forEach(function(k) {
+        var p = panels[k];
+        if (!p) return;
+        p.classList.remove('active', 'behind');
+        if (k === name) { p.classList.add('active'); }
+        else if (pushHistory && history.indexOf(k) >= 0) { p.classList.add('behind'); }
+      });
+      if (pushHistory) history.push(name);
+    }
+
+    function goBack(targetName) {
+      history.pop();
+      Object.keys(panels).forEach(function(k) {
+        var p = panels[k];
+        if (!p) return;
+        p.classList.remove('active', 'behind');
+      });
+      if (panels[targetName]) panels[targetName].classList.add('active');
+    }
+
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (closeBtn)  closeBtn.addEventListener('click', closeDrawer);
+
+    // 패널 이동 버튼
+    drawer.querySelectorAll('[data-panel]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        showPanel(btn.dataset.panel);
+      });
+    });
+
+    // 뒤로가기 버튼
+    drawer.querySelectorAll('[data-back]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        goBack(btn.dataset.back);
+      });
+    });
+
+    // 링크 클릭 시 드로어 닫기
+    drawer.querySelectorAll('a.mob-menu-item').forEach(function(a) {
+      a.addEventListener('click', closeDrawer);
+    });
+  })();
+  </script>
+<script src="lang.js"></script>
+</body>
+</html>

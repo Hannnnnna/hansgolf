@@ -5,7 +5,7 @@
   <title>태국 골프여행 견적 – HANS GOLF</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">family=Noto+Sans+KR:wght@300;400;500;700<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -21,9 +21,9 @@
         <ul>
           <li><a href="index.html" data-i18n="nav_home">홈</a></li>
           <li><a href="profile.html" data-i18n="nav_profile">프로필</a></li>
-          <li class="has-dropdown"><a href="#" data-i18n="nav_tour">투어소개 ▾</a>
+          <li class="has-dropdown"><a href="#" data-i18n="nav_tour">투어소개<span class="arrow"> ▾</span></a>
             <ul class="dropdown">
-              <li class="has-dropdown"><a href="#" data-i18n="nav_courses">코스소개 ▸</a>
+              <li class="has-dropdown"><a href="#" data-i18n="nav_courses">코스소개<span class="arrow"> ▸</span></a>
                 <ul class="dropdown sub-dropdown">
                   <li><a href="bangpra.html" data-i18n="nav_bangpra">방프라</a></li>
                   <li><a href="mountain-shadow.html" data-i18n="nav_mountain">마운틴 쉐도우</a></li>
@@ -35,7 +35,7 @@
               <li><a href="nearby.html" data-i18n="nav_nearby">주변시설</a></li>
             </ul>
           </li>
-          <li class="has-dropdown"><a href="#" data-i18n="nav_quote">견적문의 ▾</a>
+          <li class="has-dropdown"><a href="#" data-i18n="nav_quote">견적문의<span class="arrow"> ▾</span></a>
             <ul class="dropdown">
               <li><a href="quote-tour.html" data-i18n="nav_quote_tour">태국 골프여행 견적</a></li>
               <li><a href="quote-lesson.html" data-i18n="nav_quote_lesson">레슨 프로그램 견적</a></li>
@@ -52,10 +52,177 @@
       </div>
     </div>
   </header>
-  <main class="page-content">
-    <h1>태국 골프여행</h1>
+
+  <!-- ── 모바일 드로어 ── -->
+  <div class="mob-drawer" id="mobDrawer">
+    <div class="mob-drawer-header">
+      <a href="index.html" class="mob-drawer-logo">HANS GOLF</a>
+      <button class="mob-drawer-close" id="mobDrawerClose">&#215;</button>
+    </div>
+    <div class="mob-panels">
+      <!-- 메인 패널 -->
+      <div class="mob-panel active" id="mobPanelMain">
+        <a href="index.html" class="mob-menu-item" data-i18n="nav_home">홈</a>
+        <a href="profile.html" class="mob-menu-item" data-i18n="nav_profile">프로필</a>
+        <button class="mob-menu-item" data-panel="tour">
+          <span data-i18n="nav_tour">투어소개</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <button class="mob-menu-item" data-panel="quote">
+          <span data-i18n="nav_quote">견적문의</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <a href="fitting.html" class="mob-menu-item" data-i18n="nav_fitting">클럽피팅</a>
+        <a href="immigration.html" class="mob-menu-item" data-i18n="nav_immigration">입국정보</a>
+      </div>
+      <!-- 투어소개 패널 -->
+      <div class="mob-panel" id="mobPanelTour">
+        <button class="mob-panel-back" data-back="main" data-i18n="nav_tour">투어소개</button>
+        <button class="mob-menu-item" data-panel="courses">
+          <span data-i18n="nav_courses">코스소개</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <a href="hotel.html" class="mob-menu-item" data-i18n="nav_hotel">호텔시설</a>
+        <a href="nearby.html" class="mob-menu-item" data-i18n="nav_nearby">주변시설</a>
+      </div>
+      <!-- 코스소개 패널 -->
+      <div class="mob-panel" id="mobPanelCourses">
+        <button class="mob-panel-back" data-back="tour" data-i18n="nav_courses">코스소개</button>
+        <a href="bangpra.html" class="mob-menu-item" data-i18n="nav_bangpra">방프라</a>
+        <a href="mountain-shadow.html" class="mob-menu-item" data-i18n="nav_mountain">마운틴 쉐도우</a>
+        <a href="khao-kheow.html" class="mob-menu-item" data-i18n="nav_khao">카오 키여우</a>
+        <a href="crystal-bay.html" class="mob-menu-item" data-i18n="nav_crystal">크리스탈 베이</a>
+      </div>
+      <!-- 견적문의 패널 -->
+      <div class="mob-panel" id="mobPanelQuote">
+        <button class="mob-panel-back" data-back="main" data-i18n="nav_quote">견적문의</button>
+        <a href="quote-tour.html" class="mob-menu-item" data-i18n="nav_quote_tour">태국 골프여행 견적</a>
+        <a href="quote-lesson.html" class="mob-menu-item" data-i18n="nav_quote_lesson">레슨 프로그램 견적</a>
+      </div>
+    </div>
+  </div>
+    <main class="page-content">
+    <h1>태국 골프여행 견적</h1>
     <div class="quote-note">현재 태국 상주 중입니다.<br>카카오톡이나 태국연락처로 문의주시면 빠른 답장드리겠습니다.</div>
-    <img src="https://hansgolf.net/cdn/shop/files/quote_tour_20241215.jpg?v=1734229652&width=1600" alt="태국 골프여행 견적" class="quote-img-full" />
+
+    <!-- 견적서 -->
+    <div class="quotedoc">
+
+      <h2 class="quotedoc-title">시라차 4색 골프 투어 견적서</h2>
+
+      <!-- 코스 안내 -->
+      <div class="quotedoc-courses">
+        <div class="course-row">
+          <span class="course-type">주중 &nbsp;주말</span>
+          <span class="course-name">크리스탈베이CC, 마운틴쉐도우CC</span>
+        </div>
+        <div class="course-row">
+          <span class="course-type">주중, <em>주말오후</em></span>
+          <span class="course-name">방프라CC</span>
+        </div>
+        <div class="course-row">
+          <span class="course-type highlight">주중 ONLY</span>
+          <span class="course-name">카오키여우CC</span>
+        </div>
+      </div>
+
+      <!-- 기본 정보 테이블 -->
+      <table class="quotedoc-table">
+        <tbody>
+          <tr>
+            <th>여행자명</th>
+            <td><span class="fill-field wide">____________________ 님</span></td>
+          </tr>
+          <tr>
+            <th>여행인원</th>
+            <td><span class="fill-field">__________</span> 명</td>
+          </tr>
+          <tr>
+            <th>여행기간</th>
+            <td>
+              <div class="period-row">
+                <span>2025년 &nbsp;1월 &nbsp;<span class="fill-field sm">____</span>일 &nbsp;태국도착</span>
+                <span class="tilde">~</span>
+                <span>2025년 &nbsp;1월 &nbsp;<span class="fill-field sm">____</span>일 &nbsp;태국출발</span>
+                <span class="fill-field sm">____</span>박
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>주소</th>
+            <td>J-TOWN HOTEL, 92 Sukhumvit Rd, Si Racha, Chon Buri, Thailand</td>
+          </tr>
+          <tr>
+            <th>비용산출</th>
+            <td>주중 주말 18홀 기준</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 포함/불포함 -->
+      <div class="quotedoc-include">
+        <div class="include-col">
+          <div class="include-header">포함내역</div>
+          <div class="include-body">
+            <p>그린피, 케디피, 카트비 (1인 1카트), 숙박, 식사</p>
+          </div>
+          <div class="include-sub">
+            <p>· 조식 - 호텔식</p>
+            <p>· 중식 - 한식 및 클럽하우스식 (선택 가능)</p>
+            <p>· 석식 - 한식 뷔페 (비수기는 홈스테이식)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quotedoc-exclude">
+        <div class="include-header">불포함내역</div>
+        <div class="include-body">
+          <p>· 캐디팁</p>
+          <p>· 객실 - 1인 사용시 1일당 추가비용 발생</p>
+          <p>· 공항 픽업 &amp; 샌딩 - 3인 이상 1인당 50$ / 2인 1인당 70$ / 1인 100$</p>
+          <p>· 추가라운딩 주중, 주말 18홀 85,000원</p>
+          <p class="note">* 9홀 추가는 크리스탈 베이와 마운틴 쉐도우만 가능</p>
+        </div>
+      </div>
+
+      <!-- 총액산출 -->
+      <div class="quotedoc-total">
+        <div class="total-header">
+          <span class="include-header">총액산출</span>
+          <span class="total-remark">※ 자세한 견적은 문의 부탁드립니다.</span>
+        </div>
+        <div class="total-body">
+          <div class="total-row">
+            <span class="total-label">라운딩일수 × 원</span>
+            <span class="total-eq">=</span>
+            <span class="fill-field md">____________</span> 원
+          </div>
+          <div class="total-row">
+            <span class="total-label">미팅샌딩비용</span>
+            <span class="total-eq">=</span>
+            <span>50$</span>
+          </div>
+          <div class="total-row total-final">
+            <span class="total-label"><strong>1인당 총비용</strong></span>
+            <span class="total-eq">=</span>
+            <span class="fill-field md">____________</span>
+            <span> 원 <span class="total-note">(항공권, 캐디팁, 관광시 차량비용 별도)</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 결제 -->
+      <div class="quotedoc-payment">
+        <div class="include-header">결제</div>
+        <div class="include-body">
+          <p>· 계약금 (30%) - 계약과 동시 결제</p>
+          <p>· 잔금 (70%) - 출발 전 또는 현지 결제</p>
+          <br>
+          <p class="bank-info">하나은행 &nbsp;162-691850-27007 &nbsp;예금주 한병민</p>
+        </div>
+      </div>
+
+    </div><!-- /quotedoc -->
   </main>
   <section class="contact-section">
     <div class="contact-inner">
@@ -74,3 +241,80 @@
   <footer class="site-footer">
     <p>© 2026 Hans Golf Thailand · Sriracha</p>
     <a href="privacy.html" data-i18n="footer_privacy"
+<script src="nav.js"></script>
+  <script>
+  // 모바일 드로어
+  (function() {
+    var hamburger  = document.getElementById('hamburger');
+    var drawer     = document.getElementById('mobDrawer');
+    var closeBtn   = document.getElementById('mobDrawerClose');
+    if (!drawer) return;
+
+    var panels = {
+      main:    document.getElementById('mobPanelMain'),
+      tour:    document.getElementById('mobPanelTour'),
+      courses: document.getElementById('mobPanelCourses'),
+      quote:   document.getElementById('mobPanelQuote'),
+    };
+    var history = [];
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      showPanel('main', false);
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+      history = [];
+    }
+
+    function showPanel(name, pushHistory) {
+      if (pushHistory === undefined) pushHistory = true;
+      Object.keys(panels).forEach(function(k) {
+        var p = panels[k];
+        if (!p) return;
+        p.classList.remove('active', 'behind');
+        if (k === name) { p.classList.add('active'); }
+        else if (pushHistory && history.indexOf(k) >= 0) { p.classList.add('behind'); }
+      });
+      if (pushHistory) history.push(name);
+    }
+
+    function goBack(targetName) {
+      history.pop();
+      Object.keys(panels).forEach(function(k) {
+        var p = panels[k];
+        if (!p) return;
+        p.classList.remove('active', 'behind');
+      });
+      if (panels[targetName]) panels[targetName].classList.add('active');
+    }
+
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (closeBtn)  closeBtn.addEventListener('click', closeDrawer);
+
+    // 패널 이동 버튼
+    drawer.querySelectorAll('[data-panel]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        showPanel(btn.dataset.panel);
+      });
+    });
+
+    // 뒤로가기 버튼
+    drawer.querySelectorAll('[data-back]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        goBack(btn.dataset.back);
+      });
+    });
+
+    // 링크 클릭 시 드로어 닫기
+    drawer.querySelectorAll('a.mob-menu-item').forEach(function(a) {
+      a.addEventListener('click', closeDrawer);
+    });
+  })();
+  </script>
+<script src="lang.js"></script>
+</body>
+</html>

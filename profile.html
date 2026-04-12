@@ -5,7 +5,7 @@
   <title>프로필 – HANS GOLF</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">family=Noto+Sans+KR:wght@300;400;500;700<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -21,9 +21,9 @@
         <ul>
           <li><a href="index.html" data-i18n="nav_home">홈</a></li>
           <li><a href="profile.html" data-i18n="nav_profile">프로필</a></li>
-          <li class="has-dropdown"><a href="#" data-i18n="nav_tour">투어소개 ▾</a>
+          <li class="has-dropdown"><a href="#" data-i18n="nav_tour">투어소개<span class="arrow"> ▾</span></a>
             <ul class="dropdown">
-              <li class="has-dropdown"><a href="#" data-i18n="nav_courses">코스소개 ▸</a>
+              <li class="has-dropdown"><a href="#" data-i18n="nav_courses">코스소개<span class="arrow"> ▸</span></a>
                 <ul class="dropdown sub-dropdown">
                   <li><a href="bangpra.html" data-i18n="nav_bangpra">방프라</a></li>
                   <li><a href="mountain-shadow.html" data-i18n="nav_mountain">마운틴 쉐도우</a></li>
@@ -35,7 +35,7 @@
               <li><a href="nearby.html" data-i18n="nav_nearby">주변시설</a></li>
             </ul>
           </li>
-          <li class="has-dropdown"><a href="#" data-i18n="nav_quote">견적문의 ▾</a>
+          <li class="has-dropdown"><a href="#" data-i18n="nav_quote">견적문의<span class="arrow"> ▾</span></a>
             <ul class="dropdown">
               <li><a href="quote-tour.html" data-i18n="nav_quote_tour">태국 골프여행 견적</a></li>
               <li><a href="quote-lesson.html" data-i18n="nav_quote_lesson">레슨 프로그램 견적</a></li>
@@ -52,30 +52,79 @@
       </div>
     </div>
   </header>
+
+  <!-- ── 모바일 드로어 ── -->
+  <div class="mob-drawer" id="mobDrawer">
+    <div class="mob-drawer-header">
+      <a href="index.html" class="mob-drawer-logo">HANS GOLF</a>
+      <button class="mob-drawer-close" id="mobDrawerClose">&#215;</button>
+    </div>
+    <div class="mob-panels">
+      <!-- 메인 패널 -->
+      <div class="mob-panel active" id="mobPanelMain">
+        <a href="index.html" class="mob-menu-item" data-i18n="nav_home">홈</a>
+        <a href="profile.html" class="mob-menu-item" data-i18n="nav_profile">프로필</a>
+        <button class="mob-menu-item" data-panel="tour">
+          <span data-i18n="nav_tour">투어소개</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <button class="mob-menu-item" data-panel="quote">
+          <span data-i18n="nav_quote">견적문의</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <a href="fitting.html" class="mob-menu-item" data-i18n="nav_fitting">클럽피팅</a>
+        <a href="immigration.html" class="mob-menu-item" data-i18n="nav_immigration">입국정보</a>
+      </div>
+      <!-- 투어소개 패널 -->
+      <div class="mob-panel" id="mobPanelTour">
+        <button class="mob-panel-back" data-back="main" data-i18n="nav_tour">투어소개</button>
+        <button class="mob-menu-item" data-panel="courses">
+          <span data-i18n="nav_courses">코스소개</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <a href="hotel.html" class="mob-menu-item" data-i18n="nav_hotel">호텔시설</a>
+        <a href="nearby.html" class="mob-menu-item" data-i18n="nav_nearby">주변시설</a>
+      </div>
+      <!-- 코스소개 패널 -->
+      <div class="mob-panel" id="mobPanelCourses">
+        <button class="mob-panel-back" data-back="tour" data-i18n="nav_courses">코스소개</button>
+        <a href="bangpra.html" class="mob-menu-item" data-i18n="nav_bangpra">방프라</a>
+        <a href="mountain-shadow.html" class="mob-menu-item" data-i18n="nav_mountain">마운틴 쉐도우</a>
+        <a href="khao-kheow.html" class="mob-menu-item" data-i18n="nav_khao">카오 키여우</a>
+        <a href="crystal-bay.html" class="mob-menu-item" data-i18n="nav_crystal">크리스탈 베이</a>
+      </div>
+      <!-- 견적문의 패널 -->
+      <div class="mob-panel" id="mobPanelQuote">
+        <button class="mob-panel-back" data-back="main" data-i18n="nav_quote">견적문의</button>
+        <a href="quote-tour.html" class="mob-menu-item" data-i18n="nav_quote_tour">태국 골프여행 견적</a>
+        <a href="quote-lesson.html" class="mob-menu-item" data-i18n="nav_quote_lesson">레슨 프로그램 견적</a>
+      </div>
+    </div>
+  </div>
   <main class="page-content">
     <div class="page-hero">
       <img src="https://hansgolf.net/cdn/shop/files/allan-nygren--xvKQuNtOhI-unsplash.jpg?v=1731831590&width=1600" alt="프로필" />
-      <div class="page-hero-title"><h1>프로필</h1><p>Han Byung-min Pro · Sriracha</p></div>
+      <div class="page-hero-title"><h1 data-i18n="page_profile">프로필</h1><p>Han Byung-min Pro · Sriracha</p></div>
     </div>
-    <h2>한스골프 태국투어 시라차</h2>
-    <p>태국 시라차 한병민 프로입니다.</p>
-    <p>전지훈련의 좋은 성과를 얻기 위해서 무엇보다도 코스의 선정이 가장 중요합니다.</p>
-    <p>다양한 상황에서 샷의 숙련도를 키우기 위해서는 평범하기만 한 코스에서는 얻기 힘들다는 것은 누구나 인지하고 있는 사실입니다.</p>
-    <p>다양한 코스와 다양한 공략, 다양한 거리의 감각 등이 골프의 완숙미를 만들어 줄 것이라고 확신합니다.</p>
-    <p>모든 일에 항상 노력하는 자세로 고객들의 요구에 부응하여 만족스러운 골프여행이 되실 수 있도록 최선을 다하겠습니다.</p>
-    <h3>Experience</h3>
+    <h2 data-i18n="profile_title">한스골프 태국투어 시라차</h2>
+    <p data-i18n="profile_p1">태국 시라차 한병민 프로입니다.</p>
+    <p data-i18n="profile_p2">전지훈련의 좋은 성과를 얻기 위해서 무엇보다도 코스의 선정이 가장 중요합니다.</p>
+    <p data-i18n="profile_p3">다양한 상황에서 샷의 숙련도를 키우기 위해서는 평범하기만 한 코스에서는 얻기 힘들다는 것은 누구나 인지하고 있는 사실입니다.</p>
+    <p data-i18n="profile_p4">다양한 코스와 다양한 공략, 다양한 거리의 감각 등이 골프의 완숙미를 만들어 줄 것이라고 확신합니다.</p>
+    <p data-i18n="profile_p5">모든 일에 항상 노력하는 자세로 고객들의 요구에 부응하여 만족스러운 골프여행이 되실 수 있도록 최선을 다하겠습니다.</p>
+    <h3 class="section-heading">Experience</h3>
     <table class="exp-table">
       <tr><td>Present</td><td>KPGA Member — Korea Professional Golfer's Association<br>KGFA Director of Education — Korea Golf Fitting Association<br>Thaiseniorpga Member</td></tr>
       <tr><td>2006 – 2013</td><td>Outpatient Professor, Nambu University</td></tr>
       <tr><td>2004 – Present</td><td>FSU Fitting Technology (FSU = fitter's union) CEO</td></tr>
       <tr><td>1992 – Present</td><td>Golf Club of Fitter in Action · Golf Junior Players Training in Action</td></tr>
     </table>
-    <h3>Education</h3>
+    <h3 class="section-heading">Education</h3>
     <table class="exp-table">
       <tr><td>2001</td><td>Master's Thesis: Kinematic Factors Analysis of Golf Swing Motion on the Physical Types<br>Wonkwang University</td></tr>
       <tr><td>1988</td><td>Bachelor of Electronic Engineering, Wonkwang University</td></tr>
     </table>
-    <h2>태국 정식 인증 업체</h2>
+    <h2 data-i18n="profile_cert">태국 정식 인증 업체</h2>
     <div class="cert-grid">
       <img src="https://hansgolf.net/cdn/shop/files/1.png?v=1732615046&width=800" alt="인증 1" />
       <img src="https://hansgolf.net/cdn/shop/files/2.png?v=1732615046&width=800" alt="인증 2" />
@@ -98,3 +147,80 @@
   <footer class="site-footer">
     <p>© 2026 Hans Golf Thailand · Sriracha</p>
     <a href="privacy.html" data-i18n="footer_privacy"
+<script src="nav.js"></script>
+  <script>
+  // 모바일 드로어
+  (function() {
+    var hamburger  = document.getElementById('hamburger');
+    var drawer     = document.getElementById('mobDrawer');
+    var closeBtn   = document.getElementById('mobDrawerClose');
+    if (!drawer) return;
+
+    var panels = {
+      main:    document.getElementById('mobPanelMain'),
+      tour:    document.getElementById('mobPanelTour'),
+      courses: document.getElementById('mobPanelCourses'),
+      quote:   document.getElementById('mobPanelQuote'),
+    };
+    var history = [];
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      showPanel('main', false);
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+      history = [];
+    }
+
+    function showPanel(name, pushHistory) {
+      if (pushHistory === undefined) pushHistory = true;
+      Object.keys(panels).forEach(function(k) {
+        var p = panels[k];
+        if (!p) return;
+        p.classList.remove('active', 'behind');
+        if (k === name) { p.classList.add('active'); }
+        else if (pushHistory && history.indexOf(k) >= 0) { p.classList.add('behind'); }
+      });
+      if (pushHistory) history.push(name);
+    }
+
+    function goBack(targetName) {
+      history.pop();
+      Object.keys(panels).forEach(function(k) {
+        var p = panels[k];
+        if (!p) return;
+        p.classList.remove('active', 'behind');
+      });
+      if (panels[targetName]) panels[targetName].classList.add('active');
+    }
+
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (closeBtn)  closeBtn.addEventListener('click', closeDrawer);
+
+    // 패널 이동 버튼
+    drawer.querySelectorAll('[data-panel]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        showPanel(btn.dataset.panel);
+      });
+    });
+
+    // 뒤로가기 버튼
+    drawer.querySelectorAll('[data-back]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        goBack(btn.dataset.back);
+      });
+    });
+
+    // 링크 클릭 시 드로어 닫기
+    drawer.querySelectorAll('a.mob-menu-item').forEach(function(a) {
+      a.addEventListener('click', closeDrawer);
+    });
+  })();
+  </script>
+<script src="lang.js"></script>
+</body>
+</html>

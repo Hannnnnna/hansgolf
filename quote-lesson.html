@@ -5,7 +5,7 @@
   <title>레슨 프로그램 견적 – HANS GOLF</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">family=Noto+Sans+KR:wght@300;400;500;700<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -21,9 +21,9 @@
         <ul>
           <li><a href="index.html" data-i18n="nav_home">홈</a></li>
           <li><a href="profile.html" data-i18n="nav_profile">프로필</a></li>
-          <li class="has-dropdown"><a href="#" data-i18n="nav_tour">투어소개 ▾</a>
+          <li class="has-dropdown"><a href="#" data-i18n="nav_tour">투어소개<span class="arrow"> ▾</span></a>
             <ul class="dropdown">
-              <li class="has-dropdown"><a href="#" data-i18n="nav_courses">코스소개 ▸</a>
+              <li class="has-dropdown"><a href="#" data-i18n="nav_courses">코스소개<span class="arrow"> ▸</span></a>
                 <ul class="dropdown sub-dropdown">
                   <li><a href="bangpra.html" data-i18n="nav_bangpra">방프라</a></li>
                   <li><a href="mountain-shadow.html" data-i18n="nav_mountain">마운틴 쉐도우</a></li>
@@ -35,7 +35,7 @@
               <li><a href="nearby.html" data-i18n="nav_nearby">주변시설</a></li>
             </ul>
           </li>
-          <li class="has-dropdown"><a href="#" data-i18n="nav_quote">견적문의 ▾</a>
+          <li class="has-dropdown"><a href="#" data-i18n="nav_quote">견적문의<span class="arrow"> ▾</span></a>
             <ul class="dropdown">
               <li><a href="quote-tour.html" data-i18n="nav_quote_tour">태국 골프여행 견적</a></li>
               <li><a href="quote-lesson.html" data-i18n="nav_quote_lesson">레슨 프로그램 견적</a></li>
@@ -52,10 +52,181 @@
       </div>
     </div>
   </header>
-  <main class="page-content">
-    <h1>레슨 프로그램 견적</h1>
+
+  <!-- ── 모바일 드로어 ── -->
+  <div class="mob-drawer" id="mobDrawer">
+    <div class="mob-drawer-header">
+      <a href="index.html" class="mob-drawer-logo">HANS GOLF</a>
+      <button class="mob-drawer-close" id="mobDrawerClose">&#215;</button>
+    </div>
+    <div class="mob-panels">
+      <!-- 메인 패널 -->
+      <div class="mob-panel active" id="mobPanelMain">
+        <a href="index.html" class="mob-menu-item" data-i18n="nav_home">홈</a>
+        <a href="profile.html" class="mob-menu-item" data-i18n="nav_profile">프로필</a>
+        <button class="mob-menu-item" data-panel="tour">
+          <span data-i18n="nav_tour">투어소개</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <button class="mob-menu-item" data-panel="quote">
+          <span data-i18n="nav_quote">견적문의</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <a href="fitting.html" class="mob-menu-item" data-i18n="nav_fitting">클럽피팅</a>
+        <a href="immigration.html" class="mob-menu-item" data-i18n="nav_immigration">입국정보</a>
+      </div>
+      <!-- 투어소개 패널 -->
+      <div class="mob-panel" id="mobPanelTour">
+        <button class="mob-panel-back" data-back="main" data-i18n="nav_tour">투어소개</button>
+        <button class="mob-menu-item" data-panel="courses">
+          <span data-i18n="nav_courses">코스소개</span>
+          <span class="mob-arrow">›</span>
+        </button>
+        <a href="hotel.html" class="mob-menu-item" data-i18n="nav_hotel">호텔시설</a>
+        <a href="nearby.html" class="mob-menu-item" data-i18n="nav_nearby">주변시설</a>
+      </div>
+      <!-- 코스소개 패널 -->
+      <div class="mob-panel" id="mobPanelCourses">
+        <button class="mob-panel-back" data-back="tour" data-i18n="nav_courses">코스소개</button>
+        <a href="bangpra.html" class="mob-menu-item" data-i18n="nav_bangpra">방프라</a>
+        <a href="mountain-shadow.html" class="mob-menu-item" data-i18n="nav_mountain">마운틴 쉐도우</a>
+        <a href="khao-kheow.html" class="mob-menu-item" data-i18n="nav_khao">카오 키여우</a>
+        <a href="crystal-bay.html" class="mob-menu-item" data-i18n="nav_crystal">크리스탈 베이</a>
+      </div>
+      <!-- 견적문의 패널 -->
+      <div class="mob-panel" id="mobPanelQuote">
+        <button class="mob-panel-back" data-back="main" data-i18n="nav_quote">견적문의</button>
+        <a href="quote-tour.html" class="mob-menu-item" data-i18n="nav_quote_tour">태국 골프여행 견적</a>
+        <a href="quote-lesson.html" class="mob-menu-item" data-i18n="nav_quote_lesson">레슨 프로그램 견적</a>
+      </div>
+    </div>
+  </div>
+    <main class="page-content">
+    <h1 data-i18n="page_quote_lesson">레슨 프로그램 견적</h1>
     <div class="quote-note">현재 태국 상주 중입니다.<br>카카오톡이나 태국연락처로 문의주시면 빠른 답장드리겠습니다.</div>
-    <p style="color:var(--text-muted);font-size:14px;font-family:'Cormorant Garamond',serif;letter-spacing:0.04em;">레슨 프로그램 견적 이미지를 전달해주시면 여기에 추가하겠습니다.</p>
+
+    <div class="quotedoc">
+
+      <!-- ── 비수기 ── -->
+      <div class="lesson-season-block">
+        <div class="lesson-season-header">* 비수기 2024년 8월 1일~10월 31일 골프레슨 요금안내 (1~6박)</div>
+        <div class="lesson-season-price">255,000원 / 1박당 / 1명당 (2인 1실 기준)</div>
+      </div>
+
+      <!-- ── 성수기 ── -->
+      <div class="lesson-season-block peak">
+        <div class="lesson-season-header">* 성수기 24년 11월 1일~25년 3월 31일 골프레슨 요금안내 (1~6박)</div>
+        <div class="lesson-season-price">267,000원 / 1박당 / 1명당 (2인 1실 기준)</div>
+      </div>
+
+      <!-- ── 장기레슨 프로모션 ── -->
+      <div class="lesson-promo-block">
+        <div class="lesson-promo-header">★★★ 장기레슨 훈련생 프로모션 (7박이상) ★★★</div>
+
+        <table class="lesson-promo-table">
+          <thead>
+            <tr>
+              <th>할인금액</th>
+              <th>
+                비수기요금 (2인1실 기준)<br>
+                <span class="th-sub">2024년 8월 1일~10월 31일</span>
+              </th>
+              <th>
+                성수기요금 (2인1실 기준)<br>
+                <span class="th-sub">2024년 11월 1일~2025년 3월 31일</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>7박이상시 1박당 -30,000원 할인</td>
+              <td class="price-cell off">225,000원/1박당/1명당</td>
+              <td class="price-cell peak">237,000원/1박당/1명당</td>
+            </tr>
+            <tr>
+              <td>13박이상시 1박당 -50,000원 할인</td>
+              <td class="price-cell off">205,000원/1박당/1명당</td>
+              <td class="price-cell peak">217,000원/1박당/1명당</td>
+            </tr>
+            <tr>
+              <td>20박이상시 1박당 -65,000원 할인</td>
+              <td class="price-cell off">190,000원/1박당/1명당</td>
+              <td class="price-cell peak">202,000원/1박당/1명당</td>
+            </tr>
+            <tr>
+              <td>28박이상시 1박당 -75,000원 할인</td>
+              <td class="price-cell off">180,000원/1박당/1명당</td>
+              <td class="price-cell peak">192,000원/1박당/1명당</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="promo-notes">
+          <p><strong>28박이상 포함사항</strong> ▶ 그린피 ▶ 주 5~6일 18홀 라운딩 ▶ 주당 3회 이상 프로와 동반라운딩</p>
+          <p><strong>기타사항</strong> ▶ 태국 내 시합에 참가하고자 하는 경우 시합에 참가 가능</p>
+          <p style="padding-left:1.5em;">▶ 프로지망생의 경우 태국 PGA 테스트 출전 가능 (참가 비용 및 경비 별도)</p>
+        </div>
+      </div>
+
+      <!-- ── 포함/불포함 ── -->
+      <div class="lesson-detail-block">
+
+        <div class="lesson-detail-section include">
+          <div class="lesson-detail-label">○ 포함 사항</div>
+          <div class="lesson-detail-body">
+            <p>18홀 그린피, 호텔↔골프장 왕복차량, 마사지/쇼핑몰/외부라운딩 이동차량, 연습장 무제한 사용료,</p>
+            <p>과학적이고 체계적인 레슨 (레슨비 포함), 프로라운딩비용, 2인1실숙박, 식사3식</p>
+            <p class="indent">(조식: 호텔식, 중식: 골프장식, 석식: 홈스테이식), 생수 무제한 제공, 세탁서비스,</p>
+            <p>첫날 낮 비행기 도착 시 석식 추가비 없음 (무료제공)</p>
+          </div>
+        </div>
+
+        <div class="lesson-detail-section exclude">
+          <div class="lesson-detail-label">× 불포함사항</div>
+          <div class="lesson-detail-body">
+            <p>공항↔숙소 왕복차량비 : 1명 $100, 2명이상 $50/1인당 - 태국 현지 달러화 지불</p>
+            <p class="highlight-red">1인1실 사용료(싱글차지) +30,000원/1박당/1명당 (객실 가능여부에 따라 홈스테이 숙박 1인1실 사용료 면제)</p>
+            <p class="highlight-red">18홀당 캐디피+카트비: 1,000바트, 18홀당 캐디팁: 400바트 - 태국 현지 바트화 지불</p>
+            <p class="highlight-red">항공료, 개인경비, 여행자보험 (출국전 가입권장드립니다. 한국실비보험 해외 질병/사고 보장불가)</p>
+          </div>
+        </div>
+
+        <div class="lesson-detail-section accommodation">
+          <div class="lesson-detail-label">▶ 숙소</div>
+          <div class="lesson-detail-body">
+            <p>2인1실 - J 타운 서비스드 아파트먼츠 앤 호텔 &nbsp;※ 싱글차지 별도</p>
+            <p style="margin-top:6px;">또는</p>
+            <p>1인1실: 홈스테이식 (총 3객실: 가능여부에 따라 제공, 건물2~4층 층당 1방 1거실 1샤워실)</p>
+          </div>
+        </div>
+
+        <div class="lesson-detail-section golf-access">
+          <div class="lesson-detail-label">▶ 골프장 (이동시간)</div>
+          <div class="lesson-detail-body">
+            <p>*메인 골프장 - 1. 방프라 (※ 11:30~ 이후티업, 약 12분-),</p>
+            <p class="indent2">2. 크리스탈베이 (메인, 약 15분~), 3. 마운틴쉐도우 (약 17분~)</p>
+            <p>*부 골프장 - 4. 프리젠트 밸리 (약 20분), 20분 5. 카오키여우 (약 35분-)</p>
+            <p class="note-green">※ 메인골프장 1~3 위주로 필드레슨 진행합니다. 이외 외부라운딩 현지 별도 문의가능</p>
+          </div>
+        </div>
+
+        <div class="lesson-detail-section training">
+          <div class="lesson-detail-label">▶ 훈련조건</div>
+          <div class="lesson-detail-body">
+            <p>5일이하 - 전 일정 KPGA프로 동반라운딩</p>
+            <p>7일이상 - 주당 1~2회 휴무, 프로동반라운딩 주당 3~4회</p>
+          </div>
+        </div>
+
+      </div><!-- /lesson-detail-block -->
+
+      <!-- ── 편의제공 ── -->
+      <div class="lesson-benefit-block">
+        <span class="benefit-label">▶ 편의제공</span>
+        <span class="benefit-text">무료클럽체킹 + 클럽에 대한 상담 무료 (클럽피팅전문점: 한국골프클럽피팅협회 교육원장 역임)</span>
+      </div>
+
+    </div><!-- /quotedoc -->
   </main>
   <section class="contact-section">
     <div class="contact-inner">
@@ -74,3 +245,80 @@
   <footer class="site-footer">
     <p>© 2026 Hans Golf Thailand · Sriracha</p>
     <a href="privacy.html" data-i18n="footer_privacy"
+<script src="nav.js"></script>
+  <script>
+  // 모바일 드로어
+  (function() {
+    var hamburger  = document.getElementById('hamburger');
+    var drawer     = document.getElementById('mobDrawer');
+    var closeBtn   = document.getElementById('mobDrawerClose');
+    if (!drawer) return;
+
+    var panels = {
+      main:    document.getElementById('mobPanelMain'),
+      tour:    document.getElementById('mobPanelTour'),
+      courses: document.getElementById('mobPanelCourses'),
+      quote:   document.getElementById('mobPanelQuote'),
+    };
+    var history = [];
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      showPanel('main', false);
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+      history = [];
+    }
+
+    function showPanel(name, pushHistory) {
+      if (pushHistory === undefined) pushHistory = true;
+      Object.keys(panels).forEach(function(k) {
+        var p = panels[k];
+        if (!p) return;
+        p.classList.remove('active', 'behind');
+        if (k === name) { p.classList.add('active'); }
+        else if (pushHistory && history.indexOf(k) >= 0) { p.classList.add('behind'); }
+      });
+      if (pushHistory) history.push(name);
+    }
+
+    function goBack(targetName) {
+      history.pop();
+      Object.keys(panels).forEach(function(k) {
+        var p = panels[k];
+        if (!p) return;
+        p.classList.remove('active', 'behind');
+      });
+      if (panels[targetName]) panels[targetName].classList.add('active');
+    }
+
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (closeBtn)  closeBtn.addEventListener('click', closeDrawer);
+
+    // 패널 이동 버튼
+    drawer.querySelectorAll('[data-panel]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        showPanel(btn.dataset.panel);
+      });
+    });
+
+    // 뒤로가기 버튼
+    drawer.querySelectorAll('[data-back]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        goBack(btn.dataset.back);
+      });
+    });
+
+    // 링크 클릭 시 드로어 닫기
+    drawer.querySelectorAll('a.mob-menu-item').forEach(function(a) {
+      a.addEventListener('click', closeDrawer);
+    });
+  })();
+  </script>
+<script src="lang.js"></script>
+</body>
+</html>
