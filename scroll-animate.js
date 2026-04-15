@@ -1,4 +1,3 @@
-// scroll-animate.js — 스크롤 페이드인 (깜빡임 없음)
 (function () {
 
   var SELECTORS = [
@@ -12,55 +11,55 @@
     '.cert-grid img',
     '.gallery-grid img',
     '.immi-step',
-    '.highlight-box',
     '.nearby-card',
     '.facility-item2',
     '.coming-soon-box',
     '.fitting-hero',
   ].join(', ');
 
-  // CSS가 로드되기 전에 미리 숨길 클래스를 <html>에 추가
-  // → CSS에서 .will-animate 요소를 처음부터 투명하게 처리
-  document.documentElement.classList.add('scroll-anim-ready');
-
   function init() {
     var els = Array.from(document.querySelectorAll(SELECTORS));
     if (!els.length) return;
 
-    // 위→아래 순서 정렬
+    // 위→아래 DOM 순서로 정렬
     els.sort(function (a, b) {
-      return a.getBoundingClientRect().top - b.getBoundingClientRect().top;
+      return a.compareDocumentPosition(b) & 4 ? -1 : 1;
     });
 
-    // will-animate 클래스 부여 (CSS가 이 클래스를 보고 숨겨둠)
+    // will-animate 클래스 부여 (CSS가 opacity:0 + translateY 상태로 숨김)
     els.forEach(function (el) {
       el.classList.add('will-animate');
     });
 
     var observer = new IntersectionObserver(function (entries) {
+      // 이번 tick에 보이는 요소들만 위→아래 순서로 모아서 stagger
       var visible = entries
         .filter(function (e) { return e.isIntersecting; })
         .sort(function (a, b) {
-          return a.target.getBoundingClientRect().top - b.target.getBoundingClientRect().top;
+          return a.target.compareDocumentPosition(b.target) & 4 ? -1 : 1;
         });
 
       visible.forEach(function (entry, i) {
         var el = entry.target;
-        setTimeout(function () {
-          el.classList.remove('will-animate');
-          el.classList.add('did-animate');
-        }, i * 90);
+        // stagger: 각 요소마다 100ms 간격
+        el.style.transitionDelay = (i * 150) + 'ms';
+        // 한 프레임 뒤에 클래스 교체 → transition 확실히 트리거
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            el.classList.remove('will-animate');
+            el.classList.add('did-animate');
+          });
+        });
         observer.unobserve(el);
       });
     }, {
       threshold: 0.08,
-      rootMargin: '0px 0px -30px 0px'
+      rootMargin: '0px 0px -24px 0px'
     });
 
     els.forEach(function (el) { observer.observe(el); });
   }
 
-  // DOMContentLoaded 전에 클래스 추가, 초기화는 DOM 준비 후
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

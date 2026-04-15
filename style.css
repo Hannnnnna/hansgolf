@@ -2,7 +2,7 @@
    HANS GOLF — Clean White Theme
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Source+Sans+3:wght@300;400;500&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -102,17 +102,17 @@ ul { list-style: none; }
 
 .logo {
   font-family: Assistant, 'Noto Sans KR', sans-serif;
-  font-size: 17px;
+  font-size: 21px;
   font-weight: 600;
-  letter-spacing: 0.2em;
-  color: #1a1a1a;          /* 아이콘과 동일한 검정 계열 */
+  letter-spacing: 0.18em;
+  color: #1a1a1a;
   flex-shrink: 0;
   text-transform: uppercase;
   transition: color 0.2s;
   display: flex;
   align-items: center;
   gap: 8px;
-  white-space: nowrap;     /* 항상 한 줄 유지 */
+  white-space: nowrap;
 }
 
 .logo:hover {
@@ -601,10 +601,9 @@ ul { list-style: none; }
 }
 
 .highlight-box {
-  background: #f0f7f3;
-  border-left: 3px solid var(--accent);
-  padding: 16px 20px;
-  border-radius: 4px;
+  background: none;
+  border-left: none;
+  padding: 0;
   margin: 20px 0;
   font-size: 14px;
   color: var(--text);
@@ -656,7 +655,7 @@ ul { list-style: none; }
   .logo {
     justify-self: center;
     order: 2;
-    font-size: 14px;
+    font-size: 19px;
     white-space: nowrap;
     display: flex;
     align-items: center;
@@ -986,13 +985,24 @@ ul { list-style: none; }
 
 .course-type em {
   font-style: normal;
-  color: #e53935;
-  font-weight: 600;
+  color: #222;
+  font-weight: 400;
+  background: rgba(229, 57, 53, 0.1);
+  padding: 1px 5px;
+  border-radius: 3px;
 }
 
 .course-type.highlight {
-  color: #e53935;
-  font-weight: 700;
+  color: #444;
+  font-weight: 400;
+}
+
+.course-type.highlight span.hl {
+  color: #222;
+  font-weight: 400;
+  background: rgba(229, 57, 53, 0.1);
+  padding: 1px 5px;
+  border-radius: 3px;
 }
 
 .course-name { color: #222; }
@@ -1127,8 +1137,11 @@ ul { list-style: none; }
 
 .total-remark {
   font-size: 13px;
-  color: #e53935;
-  font-weight: 600;
+  color: #333;
+  font-weight: 500;
+  background: rgba(229, 57, 53, 0.09);
+  padding: 2px 8px;
+  border-radius: 3px;
 }
 
 .total-body {
@@ -1393,22 +1406,25 @@ ul { list-style: none; }
 
 /* =============================================
    스크롤 애니메이션
-   scroll-anim-ready가 html에 있을 때만 숨김
-   → JS 없는 환경에서는 정상 표시
    ============================================= */
 
-/* JS 준비되면 html에 클래스 추가 → 대상 요소 즉시 숨김 */
+/* CSS 단에서 미리 숨김 → FOUC 완전 방지
+   scroll-anim-ready는 <head> 인라인 스크립트로 즉시 부여 */
 .scroll-anim-ready .will-animate {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transform: translateY(20px);
+  transition: none;    /* 숨길 땐 transition 없이 즉시 */
+  will-change: opacity, transform;
 }
 
-/* 애니메이션 완료 상태 */
+/* 나타날 때: transform + opacity 만 사용 (GPU 가속, 60fps) */
 .did-animate {
   opacity: 1 !important;
   transform: translateY(0) !important;
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  /* stagger delay는 JS에서 el.style.transitionDelay로 개별 부여 */
+  transition: opacity 0.85s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  will-change: auto;
 }
 
 /* =============================================
@@ -1451,6 +1467,10 @@ ul { list-style: none; }
 
 .contact-b .contact-inner p > *:last-child {
   color: var(--text);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
 }
 
 /* ── 버전 C: 라벨 초록 강조, 중앙 정렬 ─────── */
@@ -1540,4 +1560,12 @@ ul { list-style: none; }
   margin: 0 !important;
   font-family: 'Noto Sans KR', sans-serif;
   line-height: 1.6;
+}
+/* 입국정보 — 한스골프투어 하이라이트 문장 */
+.immi-highlight-green {
+  background: rgba(42, 110, 63, 0.12);
+  color: #1a5030;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 500;
 }
