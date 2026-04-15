@@ -101,10 +101,10 @@ ul { list-style: none; }
 }
 
 .logo {
-  font-family: Assistant, 'Noto Sans KR', sans-serif;
-  font-size: 21px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.06rem;
   color: #1a1a1a;
   flex-shrink: 0;
   text-transform: uppercase;
@@ -707,10 +707,10 @@ ul { list-style: none; }
 }
 
 .mob-drawer-logo {
-  font-family: Assistant, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-weight: 400;
+  letter-spacing: 0.06rem;
   color: #1a1a1a;
   text-decoration: none;
   text-transform: uppercase;
