@@ -13,8 +13,8 @@
     '.immi-step',
     '.nearby-card',
     '.facility-item2',
-    '.coming-soon-box',
-    '.fitting-hero',
+    '.fitting-overlay h1',
+    '.fitting-overlay p',
   ].join(', ');
 
   function init() {
@@ -42,7 +42,7 @@
       visible.forEach(function (entry, i) {
         var el = entry.target;
         // stagger: 각 요소마다 100ms 간격
-        el.style.transitionDelay = (i * 150) + 'ms';
+        el.style.transitionDelay = (i * 120) + 'ms';
         // 한 프레임 뒤에 클래스 교체 → transition 확실히 트리거
         requestAnimationFrame(function () {
           requestAnimationFrame(function () {
@@ -53,8 +53,8 @@
         observer.unobserve(el);
       });
     }, {
-      threshold: 0.08,
-      rootMargin: '0px 0px -24px 0px'
+      threshold: 0.05,
+      rootMargin: '0px 0px -10px 0px'
     });
 
     els.forEach(function (el) { observer.observe(el); });
