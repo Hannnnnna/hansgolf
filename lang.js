@@ -15,7 +15,7 @@
       tagline1: '한스골프 태국 골프여행 시라차',
       tagline2: '태국 현지 골프 투어 · 현지 아카데미 레슨 프로그램',
       hero_eyebrow: 'Sriracha, Thailand',
-      hero_title: 'HANS GOLF THAILAND TOUR', hero_sub: 'SIRACHA',
+      hero_title: 'HANS GOLF<br>THAILAND TOUR', hero_sub: 'SRIRACHA',
       kakao: '카카오톡', email: 'Email',
       thai_phone: '태국전화', korea_phone: '국내 긴급전화',
       band_btn: '네이버밴드 바로가기', footer_privacy: '개인정보처리방침',
@@ -51,7 +51,7 @@
       tagline1: 'Hans Golf Thailand Tour – Sriracha',
       tagline2: 'Thailand Golf Tour · On-site Academy Lesson Program',
       hero_eyebrow: 'Sriracha, Thailand',
-      hero_title: 'HANS GOLF THAILAND TOUR', hero_sub: 'SIRACHA',
+      hero_title: 'HANS GOLF<br>THAILAND TOUR', hero_sub: 'SRIRACHA',
       kakao: 'KakaoTalk', email: 'Email',
       thai_phone: 'Thailand', korea_phone: 'Korea (Emergency)',
       band_btn: 'Naver Band', footer_privacy: 'Privacy Policy',
@@ -84,7 +84,7 @@
       tagline1: 'Hans Golf ทัวร์กอล์ฟไทย ศรีราชา',
       tagline2: 'ทัวร์กอล์ฟในประเทศ · โปรแกรมเลสสันอะคาเดมี',
       hero_eyebrow: 'ศรีราชา ประเทศไทย',
-      hero_title: 'HANS GOLF THAILAND TOUR', hero_sub: 'SIRACHA',
+      hero_title: 'HANS GOLF<br>THAILAND TOUR', hero_sub: 'SRIRACHA',
       kakao: 'KakaoTalk', email: 'อีเมล',
       thai_phone: 'โทรไทย', korea_phone: 'เกาหลี (ฉุกเฉิน)',
       band_btn: 'Naver Band', footer_privacy: 'นโยบายความเป็นส่วนตัว',
@@ -115,27 +115,29 @@
         return;
       }
     }
-    /* 텍스트 노드가 없으면 맨 앞에 삽입 */
     el.insertBefore(document.createTextNode(text), el.firstChild);
   }
 
   function applyLang(lang) {
     var t = TEXTS[lang] || TEXTS.ko;
 
-    /* html 속성 */
     document.documentElement.setAttribute('data-lang', lang);
     document.documentElement.lang = { ko: 'ko', en: 'en', th: 'th' }[lang] || 'ko';
 
-    /* 버튼 active */
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
 
-    /* 텍스트 교체 */
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.dataset.i18n;
       var val = t[key];
       if (val === undefined) return;
+
+      /* <br> 포함된 값은 innerHTML로 처리 */
+      if (val.indexOf('<br>') !== -1) {
+        el.innerHTML = val;
+        return;
+      }
 
       if (el.children.length > 0) {
         /* 자식 엘리먼트가 있으면(드롭다운 ul, span.arrow 등) 텍스트 노드만 교체 */

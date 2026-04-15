@@ -105,14 +105,18 @@ ul { list-style: none; }
   font-size: 17px;
   font-weight: 600;
   letter-spacing: 0.2em;
-  color: #555555;
+  color: #1a1a1a;          /* 아이콘과 동일한 검정 계열 */
   flex-shrink: 0;
   text-transform: uppercase;
   transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;     /* 항상 한 줄 유지 */
 }
 
 .logo:hover {
-  color: #111111;
+  color: #000000;
 }
 
 /* ── NAV DESKTOP ─────────────────────────────── */
@@ -244,7 +248,8 @@ ul { list-style: none; }
   color: #ffffff;
   text-shadow: 0 2px 16px rgba(0,0,0,0.35);
   margin-bottom: 0;
-  line-height: 1.1;
+  line-height: 1.2;
+  white-space: pre-line;   /* br 줄바꿈 항상 유지 */
 }
 
 /* 구분선 */
@@ -651,7 +656,11 @@ ul { list-style: none; }
   .logo {
     justify-self: center;
     order: 2;
-    font-size: 15px;
+    font-size: 14px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .lang-switcher {
@@ -660,6 +669,8 @@ ul { list-style: none; }
   }
 
   .hero { height: 56vw; min-height: 260px; }
+
+
   .page-content { padding: 36px 18px 56px; }
   .page-hero { margin: -36px -18px 36px; height: 200px; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
@@ -700,9 +711,12 @@ ul { list-style: none; }
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.18em;
-  color: #555;
+  color: #1a1a1a;
   text-decoration: none;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .mob-drawer-close {
@@ -872,8 +886,8 @@ ul { list-style: none; }
 .gallery-grid.lightbox-enabled img,
 .facility-grid.lightbox-enabled img { cursor: zoom-in; }
 
-/* ── 유튜브 썸네일 링크 ────────────────────────── */
-.hotel-video-thumb {
+/* ── 유튜브 썸네일 링크 ─────────────────────────── */
+.hotel-yt-link {
   display: block;
   position: relative;
   width: 100%;
@@ -884,9 +898,10 @@ ul { list-style: none; }
   overflow: hidden;
   background: #000;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.hotel-video-thumb img {
+.hotel-yt-link img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -894,9 +909,11 @@ ul { list-style: none; }
   transition: filter 0.25s;
 }
 
-.hotel-video-thumb:hover img { filter: brightness(0.75); }
+.hotel-yt-link:hover img {
+  filter: brightness(0.7);
+}
 
-.yt-play-btn {
+.hotel-yt-play {
   position: absolute;
   inset: 0;
   display: flex;
@@ -905,14 +922,17 @@ ul { list-style: none; }
   pointer-events: none;
 }
 
-.yt-play-btn svg {
+.hotel-yt-play svg {
   width: 72px;
-  height: 50px;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+  height: 52px;
+  drop-shadow: 0 2px 12px rgba(0,0,0,0.5);
   transition: transform 0.2s;
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,0.5));
 }
 
-.hotel-video-thumb:hover .yt-play-btn svg { transform: scale(1.12); }
+.hotel-yt-link:hover .hotel-yt-play svg {
+  transform: scale(1.1);
+}
 
 /* =============================================
    견적서 (quote-tour)
@@ -1348,4 +1368,25 @@ ul { list-style: none; }
     padding: 8px 8px;
     font-size: 12px;
   }
+}
+
+/* 프로필 소개 문단 — 줄간격 축소 */
+.profile-intro p {
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+/* ── 로고 아이콘 ──────────────────────────────── */
+.logo-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.mob-logo-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
 }
