@@ -954,12 +954,12 @@ ul { list-style: none; }
   font-size: clamp(18px, 2.5vw, 24px);
   font-weight: 700;
   text-align: center;
-  padding: 28px 24px 20px;
-  border-bottom: 2px solid #222;
+  padding: 28px 24px 4px !important;
+  border: none !important;
+  border-bottom: none !important;
   color: #111;
   letter-spacing: 0.02em;
-  margin: 0;
-  border-top: none;
+  margin: 0 !important;
 }
 
 /* 코스 안내 */
@@ -1389,4 +1389,155 @@ ul { list-style: none; }
   width: 22px;
   height: 22px;
   flex-shrink: 0;
+}
+
+/* =============================================
+   스크롤 애니메이션
+   scroll-anim-ready가 html에 있을 때만 숨김
+   → JS 없는 환경에서는 정상 표시
+   ============================================= */
+
+/* JS 준비되면 html에 클래스 추가 → 대상 요소 즉시 숨김 */
+.scroll-anim-ready .will-animate {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+/* 애니메이션 완료 상태 */
+.did-animate {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+/* =============================================
+   Contact 섹션 변형 버전
+   ============================================= */
+
+/* ── 버전 B: 라벨/값 2열 테이블 ─────────────── */
+.contact-b .contact-inner {
+  max-width: 480px;
+  text-align: left;
+}
+
+.contact-b .section-label,
+.contact-b .section-rule {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-b .contact-inner p {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 0;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--border);
+  margin: 0;
+  font-size: 14px;
+  align-items: center;
+}
+
+.contact-b .contact-inner p:last-of-type {
+  border-bottom: none;
+}
+
+.contact-b .contact-inner strong {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.contact-b .contact-inner p > *:last-child {
+  color: var(--text);
+}
+
+/* ── 버전 C: 라벨 초록 강조, 중앙 정렬 ─────── */
+.contact-c .contact-inner p {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 0.5px solid var(--border);
+  margin: 0;
+}
+
+.contact-c .contact-inner p:last-of-type {
+  border-bottom: none;
+}
+
+.contact-c .contact-inner strong {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  min-width: 80px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── 버전 D: 항목별 카드 분리 ───────────────── */
+.contact-d .contact-inner {
+  max-width: 560px;
+}
+
+.contact-d .contact-inner p {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-d .contact-inner strong {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.contact-d .contact-inner p > *:not(strong) {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.contact-d .contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.contact-d .section-label,
+.contact-d .section-rule,
+.contact-d .band-btn {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .contact-d .contact-inner {
+    grid-template-columns: 1fr;
+  }
+  .contact-b .contact-inner p {
+    grid-template-columns: 90px 1fr;
+  }
+}
+
+/* 견적서 부제목 */
+.quotedoc-subtitle {
+  text-align: center !important;
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+  padding: 4px 24px 20px !important;
+  border-top: none !important;
+  border-bottom: 2px solid #222 !important;
+  margin: 0 !important;
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.6;
 }
