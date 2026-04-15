@@ -633,6 +633,7 @@ ul { list-style: none; }
 @media (max-width: 768px) {
   .header-top { display: none; }
   .lang-btn { padding: 3px 7px; font-size: 10px; }
+  .lang-switcher { display: none; }
 
   /* 기존 nav 숨김 — 모바일 드로어가 대신함 */
   .main-nav { display: none !important; }
@@ -1574,4 +1575,38 @@ ul { list-style: none; }
 .fitting-overlay h1.did-animate,
 .fitting-overlay p.did-animate {
   transition-delay: 0.1s !important;
+}
+
+/* 드로어 하단 언어 버튼 */
+.mob-drawer-lang-bottom {
+  display: flex;
+  padding: 20px 24px;
+  border-top: 1px solid var(--border);
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.mob-drawer-lang-bottom .lang-btn {
+  flex: 1;
+  padding: 10px 0;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.mob-drawer-lang-bottom .lang-btn:hover {
+  background: var(--bg2);
+  color: var(--text);
+}
+
+.mob-drawer-lang-bottom .lang-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  font-weight: 600;
 }
